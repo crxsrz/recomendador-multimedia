@@ -18,7 +18,7 @@ from recomendador import (
 
 # ── Page config ─────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Recomendador Multimedia",
+    page_title="NEXUS Multimedia",
     page_icon="🎬",
     layout="wide",
     initial_sidebar_state="expanded",
