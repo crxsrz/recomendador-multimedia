@@ -51,9 +51,4 @@ Para garantizar alta eficiencia sin depender únicamente de librerías externas,
 ├── requirements.txt       # Lista de dependencias
 └── README.md              # Documentación del proyecto
 
-## ⚙️ Instalación y Ejecución Local
 
-### 1. Clonar el repositorio
-```bash
-git clone [https://github.com/TU_USUARIO/TU_REPOSITTORIO.git](https://github.com/TU_USUARIO/TU_REPOSITTORIO.git)
-cd TU_REPOSITTORIO
