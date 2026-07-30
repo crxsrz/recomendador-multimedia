@@ -104,4 +104,9 @@ El archivo `app.py` gestiona la presentación web mediante la librería Streamli
 * **Gestión de Memoria:** Emplea la directiva `@st.cache_resource` para cargar los datasets y construir las estructuras de datos (Tabla Hash, BST y Grafo) una sola vez durante el inicio de la aplicación.
 * **Control de Acceso:** Aplica filtros automáticos sobre las estructuras de datos según el perfil de edad definido en el panel lateral.
 * **Navegación:** Proporciona interfaces dedicadas para búsqueda por nombre, exploración jerárquica de géneros, filtros combinados y el cuestionario interactivo de recomendación.
+## Ejecución del Proyecto
 
+Para iniciar la interfaz web interactiva en tu entorno local, ejecuta el siguiente comando en la terminal:
+
+```bash
+python -m streamlit run app.py
