@@ -528,31 +528,57 @@ class GrafoSimilitud:
 
 
 #  3d. PILA DE HISTORIAL 
+class NodoPila:
+    """Nodo de la lista enlazada que respalda la pila de historial."""
+    def __init__(self, valor):
+        self.valor      = valor
+        self.siguiente  = None
+
+
 class PilaHistorial:
     """
     Pila (LIFO) para guardar el historial de busquedas de la sesion.
-    Implementada sobre lista de Python sin usar collections.deque.
+    Implementada con nodos enlazados propios (lista enlazada simple):
+    no usa listas de Python ni collections.deque para almacenar los datos.
     """
     def __init__(self):
-        self._datos = []
+        self._tope   = None    # NodoPila que esta en la cima de la pila
+        self._tamano = 0
 
     def push(self, entrada: dict) -> None:
-        self._datos.append(entrada)
+        """Agrega una entrada en la cima de la pila. O(1)."""
+        nuevo_nodo = NodoPila(entrada)
+        nuevo_nodo.siguiente = self._tope
+        self._tope = nuevo_nodo
+        self._tamano += 1
 
     def pop(self):
-        return self._datos.pop() if self._datos else None
+        """Quita y devuelve la entrada en la cima, o None si esta vacia. O(1)."""
+        if self._tope is None:
+            return None
+        nodo = self._tope
+        self._tope = nodo.siguiente
+        self._tamano -= 1
+        return nodo.valor
 
     def peek(self):
-        return self._datos[-1] if self._datos else None
+        """Devuelve la entrada en la cima sin quitarla, o None si esta vacia."""
+        return self._tope.valor if self._tope else None
 
     def esta_vacia(self) -> bool:
-        return len(self._datos) == 0
+        return self._tope is None
 
     def __len__(self) -> int:
-        return len(self._datos)
+        return self._tamano
 
     def todas(self) -> list:
-        return list(reversed(self._datos))   # mas reciente primero
+        """Devuelve las entradas de la mas reciente (tope) a la mas antigua."""
+        resultado = []
+        actual = self._tope
+        while actual is not None:
+            resultado.append(actual.valor)
+            actual = actual.siguiente
+        return resultado
 
 
 # 
